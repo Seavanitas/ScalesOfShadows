@@ -42,6 +42,13 @@ var state: States = States.IDLE
 @onready var dash_length: Timer = $Dash_Length # Manipulate Wait Time to increase/decrease dash length
 @onready var attack_cooldown: Timer = $Attack_Cooldown
 @onready var slam_cooldown: Timer = $Slam_Cooldown
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var attacking_collision: CollisionShape3D = $Attacking_Hitbox/Attacking_Collision
+@onready var slamming_collision: CollisionShape3D = $Slamming_Hitbox/Slamming_Collision
+
+func _ready() -> void:
+	attacking_collision.disabled = true
+	slamming_collision.disabled = true
 
 func _physics_process(delta: float) -> void:
 	#Prevents player from going in different directions in the Z axis
@@ -122,36 +129,40 @@ func change_state(new_state: States) -> void:
 		state = new_state
 		match state:
 			States.WALKING:
-				animated_sprite_3d.play("Walk")
+				animation_player.play("Walk")
 			States.RUNNING:
-				animated_sprite_3d.play("Run")
+				animation_player.play("Run")
 			States.IDLE:
-				animated_sprite_3d.play("Idle")
+				animation_player.play("Idle")
 			States.JUMPING:
 				pass
 			States.FALLING:
-				animated_sprite_3d.play("Falling")
+				animation_player.play("Falling")
 			States.DASHING:
 				isDashing = true
 				didDash = true
-				animated_sprite_3d.play("Dash")
+				animation_player.play("Dash")
 				dash_length.start()
 			States.SLAMMING:
 				isSlamming = true
 				didSlam = true
-				animated_sprite_3d.play("Slam")
+				animation_player.play("Slam")
 				slam_cooldown.start()
 			States.ATTACKING:
 				isAttacking = true
 				didAttack = true
-				animated_sprite_3d.play("Attack")
+				animation_player.play("Attack")
 				attack_cooldown.start()
 
 func _sprite_flip(current_dir: float = 0) -> void:
 	if current_dir == 1:
 		animated_sprite_3d.flip_h = false
+		slamming_collision.position.x = 2.376
+		attacking_collision.position.x = 2.277
 	elif current_dir == -1: 
 		animated_sprite_3d.flip_h = true
+		slamming_collision.position.x = -2.277
+		attacking_collision.position.x = -2.376
 
 func _on_dash_cooldown_timeout() -> void:
 	didDash = false
@@ -167,9 +178,12 @@ func _on_attack_cooldown_timeout() -> void:
 	didAttack = false
 
 func _on_animated_sprite_3d_animation_finished() -> void:
-	isAttacking = false
-	isSlamming = false
-	change_state(States.IDLE)
+	pass
 
 func _on_slam_cooldown_timeout() -> void:
 	didSlam = false
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	isAttacking = false
+	isSlamming = false
+	change_state(States.IDLE)
