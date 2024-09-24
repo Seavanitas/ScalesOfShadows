@@ -7,13 +7,13 @@ const gravity = 40
 var IDLE_SPEED := 1.5
 var CHASE_SPEED := 3
 var current_dir := 1
-
 var player = null # A variable for the player. If the player is in then player = body
 var player_current_dir # A variable to store the player's current position in the scene
-
 var isAttacking = false # A boolean var to prevent the snake from spamming attacks
-
-# This enum lists all the possible states the character can be in.
+var knockback_dir := 1 # Stores player knockback
+var knockback := 25# Stores knockback power
+var knockback_airtime := 5 # Stores knockback airtime
+# This enum ists all the possible states the character can be in.
 enum States {IDLE, CHASING, ATTACKING, DEAD}
 
 # This variable keeps track of the character's current state.
@@ -121,13 +121,22 @@ func _on_animated_sprite_3d_animation_finished() -> void:
 func _on_attack_cd_timeout() -> void:
 	isAttacking = false
 
-
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if player != null:
 		change_state(States.CHASING)
 	else:
 		change_state(States.IDLE)
 
-func _on_snake_attack_hitbox_area_entered(area: Area3D) -> void:
-	if area.is_in_group("Player"):
-		emit_signal("snake_dir", current_dir)
+## Calls snake_dir function in player, recieves snake current dir
+func _on_snake_attack_hitbox_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Player"):
+		body.snake_dir(current_dir)
+
+## Gets called from player area3D, recieves player current dir
+func player_dir(player_current_dir) -> void:
+	knockback_dir = player_current_dir
+
+func _on_snake_hitbox_area_entered(area: Area3D) -> void:
+	if area.is_in_group("player_attack"):
+		velocity.x = knockback * knockback_dir
+		velocity.y = knockback_airtime

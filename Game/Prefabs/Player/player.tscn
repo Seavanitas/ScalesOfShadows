@@ -376,4 +376,5 @@ shape = SubResource("CapsuleShape3D_iig4d")
 [connection signal="timeout" from="Attack_Cooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="Slam_Cooldown" to="." method="_on_slam_cooldown_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="Attacking_Hitbox" to="." method="_on_attacking_hitbox_body_entered"]
 [connection signal="area_entered" from="Player_Hitbox" to="." method="_on_player_hitbox_area_entered"]

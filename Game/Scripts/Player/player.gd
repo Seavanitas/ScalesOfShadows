@@ -32,7 +32,11 @@ var dash_direction: Vector3 = Vector3.ZERO
 # Stores knockback power
 var knockback := 50
 # Stores knockback direction
-var knockback_dir := 0
+var knockback_dir := 1
+# Stores knocbkac airtime
+var knockback_airtime := 10
+# Stores current direction
+var current_dir := 1
 
 # This enum lists all the possible states the character can be in.
 enum States {IDLE, RUNNING, JUMPING, FALLING, DASHING, WALKING, ATTACKING, SLAMMING}
@@ -115,12 +119,13 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction.x * CURRENT_SPEED  # Allow input to change horizontal movement
 		if state == States.JUMPING:
 			velocity.y += JUMP_VELOCITY
-
+	
+	print(knockback_dir)
 	# Flip sprite based on input direction
 	_sprite_flip(current_dir)
-	_knockback_dir(current_dir)
 	move_and_slide()
 
+## State change 
 func change_state(new_state: States) -> void:
 	#Prevents State Change if one of the Booleans are active
 	if isDashing:
@@ -159,12 +164,7 @@ func change_state(new_state: States) -> void:
 				animation_player.play("Attack")
 				attack_cooldown.start()
 
-func _knockback_dir(current_dir: float = 0) -> void:
-	if current_dir == 1:
-		knockback_dir = -1
-	elif current_dir == -1:
-		knockback_dir = 1
-
+## Flips player sprite
 func _sprite_flip(current_dir: float = 0) -> void:
 	if current_dir == 1:
 		animated_sprite_3d.flip_h = false
@@ -175,34 +175,41 @@ func _sprite_flip(current_dir: float = 0) -> void:
 		slamming_collision.position.x = -2.277
 		attacking_collision.position.x = -2.376
 
+## Dash cooldown
 func _on_dash_cooldown_timeout() -> void:
 	didDash = false
 
+## Dash length
 func _on_dash_length_timeout() -> void:
 	isDashing = false
 	velocity.x = 0
 	change_state(States.FALLING)
 	dash_cooldown.start()
 
-
+## Attack Cooldown
 func _on_attack_cooldown_timeout() -> void:
 	didAttack = false
-
-func _on_animated_sprite_3d_animation_finished() -> void:
-	pass
-
+	
+## Slam cooldown
 func _on_slam_cooldown_timeout() -> void:
 	didSlam = false
 
+## Sets flags to false after finished animation
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	isAttacking = false
 	isSlamming = false
 	change_state(States.IDLE)
 
-
+## Function if an enemy hits the player
 func _on_player_hitbox_area_entered(area: Area3D) -> void:
 	if area.is_in_group("snake_attack1"):
-		pass
+		velocity.x = knockback_dir * knockback
+		velocity.y = knockback_airtime
 
-func _on_snake_snake_dir(snake_dir: Variant) -> void:
-	velocity.x = snake_dir * knockback
+## Gets called from the snake scene, gets the snake current direction
+func snake_dir(snake_current_dir) -> void:
+	knockback_dir = snake_current_dir
+
+func _on_attacking_hitbox_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Snake"):
+		body.player_dir(current_dir)
