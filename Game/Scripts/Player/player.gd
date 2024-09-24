@@ -29,6 +29,10 @@ var isSlamming = false
 const gravity = 40
 # Stores the dash direction
 var dash_direction: Vector3 = Vector3.ZERO
+# Stores knockback power
+var knockback := 50
+# Stores knockback direction
+var knockback_dir := 0
 
 # This enum lists all the possible states the character can be in.
 enum States {IDLE, RUNNING, JUMPING, FALLING, DASHING, WALKING, ATTACKING, SLAMMING}
@@ -114,6 +118,7 @@ func _physics_process(delta: float) -> void:
 
 	# Flip sprite based on input direction
 	_sprite_flip(current_dir)
+	_knockback_dir(current_dir)
 	move_and_slide()
 
 func change_state(new_state: States) -> void:
@@ -154,6 +159,12 @@ func change_state(new_state: States) -> void:
 				animation_player.play("Attack")
 				attack_cooldown.start()
 
+func _knockback_dir(current_dir: float = 0) -> void:
+	if current_dir == 1:
+		knockback_dir = -1
+	elif current_dir == -1:
+		knockback_dir = 1
+
 func _sprite_flip(current_dir: float = 0) -> void:
 	if current_dir == 1:
 		animated_sprite_3d.flip_h = false
@@ -187,3 +198,11 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	isAttacking = false
 	isSlamming = false
 	change_state(States.IDLE)
+
+
+func _on_player_hitbox_area_entered(area: Area3D) -> void:
+	if area.is_in_group("snake_attack1"):
+		pass
+
+func _on_snake_snake_dir(snake_dir: Variant) -> void:
+	velocity.x = snake_dir * knockback

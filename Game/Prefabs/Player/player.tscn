@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://sxqddue2psw8"]
+[gd_scene load_steps=16 format=3 uid="uid://sxqddue2psw8"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_fyjug"]
 [ext_resource type="SpriteFrames" uid="uid://dhilxglpwgqn3" path="res://Assets/Player/Player_Sprite_Frames.tres" id="2_qwvis"]
@@ -305,6 +305,10 @@ size = Vector3(3.53, 1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_d6e4e"]
 size = Vector3(3.522, 3.586, 1)
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iig4d"]
+radius = 0.715
+height = 3.085
+
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_fyjug")
 
@@ -348,18 +352,23 @@ libraries = {
 }
 autoplay = "Idle"
 
-[node name="Attacking_Hitbox" type="Area3D" parent="." groups=["PlayerAttack"]]
+[node name="Attacking_Hitbox" type="Area3D" parent="." groups=["player_attack"]]
 
 [node name="Attacking_Collision" type="CollisionShape3D" parent="Attacking_Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.277, -0.605, 0)
 shape = SubResource("BoxShape3D_tuhws")
 
-[node name="Slamming_Hitbox" type="Area3D" parent="." groups=["PlayerAttack"]]
+[node name="Slamming_Hitbox" type="Area3D" parent="." groups=["Player", "player_attack", "player_slam"]]
 
 [node name="Slamming_Collision" type="CollisionShape3D" parent="Slamming_Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.376, 0.495, 0)
 shape = SubResource("BoxShape3D_d6e4e")
 disabled = true
+
+[node name="Player_Hitbox" type="Area3D" parent="." groups=["Player"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player_Hitbox"]
+shape = SubResource("CapsuleShape3D_iig4d")
 
 [connection signal="animation_finished" from="AnimatedSprite3D" to="." method="_on_animated_sprite_3d_animation_finished"]
 [connection signal="timeout" from="Dash_Cooldown" to="." method="_on_dash_cooldown_timeout"]
@@ -367,3 +376,4 @@ disabled = true
 [connection signal="timeout" from="Attack_Cooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="Slam_Cooldown" to="." method="_on_slam_cooldown_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="area_entered" from="Player_Hitbox" to="." method="_on_player_hitbox_area_entered"]

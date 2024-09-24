@@ -1,4 +1,5 @@
 extends CharacterBody3D
+signal snake_dir(snake_dir)
 
 ## Variable Declerations
 const gravity = 40
@@ -11,6 +12,7 @@ var player = null # A variable for the player. If the player is in then player =
 var player_current_dir # A variable to store the player's current position in the scene
 
 var isAttacking = false # A boolean var to prevent the snake from spamming attacks
+
 # This enum lists all the possible states the character can be in.
 enum States {IDLE, CHASING, ATTACKING, DEAD}
 
@@ -125,3 +127,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		change_state(States.CHASING)
 	else:
 		change_state(States.IDLE)
+
+func _on_snake_attack_hitbox_area_entered(area: Area3D) -> void:
+	if area.is_in_group("Player"):
+		emit_signal("snake_dir", current_dir)
