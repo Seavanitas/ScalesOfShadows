@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://nqtfmpjg87tg"]
+
+[ext_resource type="Script" path="res://Scripts/Spikes/tall_spikes.gd" id="1_5vg1s"]
+[ext_resource type="ArrayMesh" uid="uid://byc6d5twmxkbb" path="res://Assets/Traps/Spikes/Tall_Spikes.tres" id="1_7jeif"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_b0yr4"]
+points = PackedVector3Array(-0.257206, 2.88858, 1.43998, 0.274984, 2.89841, 1.27286, -0.0394726, 3.44441, 1.23517, -0.605182, 3.45187, 0.457945, -0.72392, 2.90688, 0.753622, -0.648644, -0.00209232, 0.497701, -0.0792413, -0.00717617, 1.08923, 0.662871, 2.87367, 1.05188, 0.0609433, -0.00446478, 1.04517, 0.49215, 3.4373, 0.824357, -0.000130057, 3.45255, -2.70903e-05, -0.787976, 2.90587, 0.199271, -0.604756, -0.00141448, 0.357608, 0.457778, -0.00988755, 0.577558, 0.643413, 2.91976, 0.496152, 0.595832, -0.00582048, 0.527475, 0.590719, 0.00604182, 0.381186, 0.0498649, 2.90959, -0.31825, -0.111482, -5.87869e-05, -0.0566497, 0.0193282, -5.87869e-05, -0.123599, 0.123295, -5.87869e-05, -0.0198192)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rg78p"]
+size = Vector3(1.38, 0.506, 1.425)
+
+[node name="Tall_Spikes" type="StaticBody3D"]
+script = ExtResource("1_5vg1s")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.517001)
+mesh = ExtResource("1_7jeif")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.517001)
+shape = SubResource("ConvexPolygonShape3D_b0yr4")
+
+[node name="tall_spikes_attack_hitbox" type="Area3D" parent="." groups=["spikes"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tall_spikes_attack_hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.26632, 0)
+shape = SubResource("BoxShape3D_rg78p")

@@ -1,0 +1,41 @@
+[gd_resource type="ArrayMesh" load_steps=4 format=4 uid="uid://cyt1cyxpldkh8"]
+
+[ext_resource type="Texture2D" uid="uid://da681snne67c6" path="res://Assets/Gridmaps/Imports/Gridmap_Infrastructure_OverworldTexture.png" id="1_4pcis"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_blism"]
+resource_name = "OverworldTexture"
+albedo_texture = ExtResource("1_4pcis")
+roughness = 0.5
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_k6nu7"]
+_surfaces = [{
+"aabb": AABB(-3, 0, -1, 6, 6, 0.5),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("BgAEAAcABgAFAAQABwACAAEABwAEAAIAAgAFAAMAAgAEAAUAAQAGAAcAAQAAAAYAAAAFAAYAAAADAAUAAQADAAAAAQACAAMA"),
+"name": "OverworldTexture",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AABAQAAAAAAAAAC/AABAwAAAAAAAAAC/AABAwAAAwEAAAAC/AABAQAAAwEAAAAC/AABAwAAAwEAAAIC/AABAQAAAwEAAAIC/AABAQAAAAAAAAIC/AABAwAAAAAAAAIC/")
+}]
+blend_shape_mode = 0
+
+[resource]
+resource_name = "Gridmap_Infrastructure_Plane_255"
+_surfaces = [{
+"aabb": AABB(-3, 0, -1, 6, 6, 0.5),
+"attribute_data": PackedByteArray("AADAPgAAcD8AALA+AAA0PwAAqD4AADg/AABAPgAAcD8AAKA+AAA0PwAAqD4AADg/AABAPgAAQD8AAKA+AAA0PwAAqD4AADA/AADAPgAAQD8AALA+AAA0PwAAqD4AADA/AACgPgAAMD8AAKA+AAA0PwAAqD4AADA/AACwPgAAMD8AALA+AAA0PwAAqD4AADA/AACwPgAAOD8AALA+AAA0PwAAqD4AADg/AACgPgAAOD8AAKA+AAA0PwAAqD4AADg/"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("EgAMABUAEgAPAAwAFwAIAAUAFwAOAAgABwAQAAoABwANABAABAATABYABAABABMAAgARABQAAgALABEAAwAJAAAAAwAGAAkA"),
+"material": SubResource("StandardMaterial3D_blism"),
+"name": "OverworldTexture",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AABAQAAAAAAAAAC/AABAQAAAAAAAAAC/AABAQAAAAAAAAAC/AABAwAAAAAAAAAC/AABAwAAAAAAAAAC/AABAwAAAAAAAAAC/AABAwAAAwEAAAAC/AABAwAAAwEAAAAC/AABAwAAAwEAAAAC/AABAQAAAwEAAAAC/AABAQAAAwEAAAAC/AABAQAAAwEAAAAC/AABAwAAAwEAAAIC/AABAwAAAwEAAAIC/AABAwAAAwEAAAIC/AABAQAAAwEAAAIC/AABAQAAAwEAAAIC/AABAQAAAwEAAAIC/AABAQAAAAAAAAIC/AABAQAAAAAAAAIC/AABAQAAAAAAAAIC/AABAwAAAAAAAAIC/AABAwAAAAAAAAIC/AABAwAAAAAAAAIC//3//f////7//fwAA////v////3////+//3//f////7//fwAA////vwAA/3////+//3//f////7//f///////vwAA/3////+//3//f////7//f///////v////3////+//////////z//f///////vwAA/3////+//////////z//f///////v////3////+//////////z//fwAA////v////3////+//////////z//fwAA////vwAA/3////+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_k6nu7")

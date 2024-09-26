@@ -1,0 +1,115 @@
+[gd_scene load_steps=6 format=3 uid="uid://qly3if1lwys4"]
+
+[ext_resource type="ArrayMesh" uid="uid://cyt1cyxpldkh8" path="res://Assets/Traps/Arrow_Wall/Arrow_Spawner.tres" id="1_6ap01"]
+[ext_resource type="Script" path="res://Scripts/Arrow_spawner/arrow_spawner.gd" id="1_kdbja"]
+[ext_resource type="ArrayMesh" uid="uid://bypg18cc87mwo" path="res://Assets/Traps/Arrow_Wall/Arrow.tres" id="2_wa8ai"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_nxhqn"]
+points = PackedVector3Array(3, 6, -0.5, 3, 6, -1, -3, 6, -0.5, 3, 0, -0.5, 3, 0, -1, -3, 6, -1, -3, 0, -0.5, -3, 0, -1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pyf3k"]
+size = Vector3(0.545715, 0.657715, 0.682617)
+
+[node name="Arrow_Spawner" type="StaticBody3D"]
+script = ExtResource("1_kdbja")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_6ap01")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_nxhqn")
+
+[node name="ArrowSpawns" type="Node3D" parent="."]
+
+[node name="arrow_spawn1" type="RayCast3D" parent="ArrowSpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, -3)
+target_position = Vector3(0, 0, 1)
+
+[node name="arrow_spawn2" type="RayCast3D" parent="ArrowSpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -3)
+target_position = Vector3(0, 0, 1)
+
+[node name="arrow_spawn3" type="RayCast3D" parent="ArrowSpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, -3)
+target_position = Vector3(0, 0, 1)
+
+[node name="arrow_spawn4" type="RayCast3D" parent="ArrowSpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 4, -3)
+target_position = Vector3(0, 0, 1)
+
+[node name="arrow_spawn5" type="RayCast3D" parent="ArrowSpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -3)
+target_position = Vector3(0, 0, 1)
+
+[node name="Arrows" type="Node3D" parent="."]
+
+[node name="Arrow" type="Node3D" parent="Arrows"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, -3)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arrows/Arrow"]
+mesh = ExtResource("2_wa8ai")
+
+[node name="arrow_attack_hitbox" type="Area3D" parent="Arrows/Arrow" groups=["arrow"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arrows/Arrow/arrow_attack_hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0320129, -0.1521, 0.158691)
+shape = SubResource("BoxShape3D_pyf3k")
+
+[node name="Arrow2" type="Node3D" parent="Arrows"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -3)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arrows/Arrow2"]
+mesh = ExtResource("2_wa8ai")
+
+[node name="arrow_attack_hitbox" type="Area3D" parent="Arrows/Arrow2" groups=["arrow"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arrows/Arrow2/arrow_attack_hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0320129, -0.1521, 0.158691)
+shape = SubResource("BoxShape3D_pyf3k")
+
+[node name="Arrow3" type="Node3D" parent="Arrows"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, -3)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arrows/Arrow3"]
+mesh = ExtResource("2_wa8ai")
+
+[node name="arrow_attack_hitbox" type="Area3D" parent="Arrows/Arrow3" groups=["arrow"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arrows/Arrow3/arrow_attack_hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0320129, -0.1521, 0.158691)
+shape = SubResource("BoxShape3D_pyf3k")
+
+[node name="Arrow4" type="Node3D" parent="Arrows"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 4, -3)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arrows/Arrow4"]
+mesh = ExtResource("2_wa8ai")
+
+[node name="arrow_attack_hitbox" type="Area3D" parent="Arrows/Arrow4" groups=["arrow"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arrows/Arrow4/arrow_attack_hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0320129, -0.1521, 0.158691)
+shape = SubResource("BoxShape3D_pyf3k")
+
+[node name="Arrow5" type="Node3D" parent="Arrows"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -3)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arrows/Arrow5"]
+mesh = ExtResource("2_wa8ai")
+
+[node name="arrow_attack_hitbox" type="Area3D" parent="Arrows/Arrow5" groups=["arrow"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arrows/Arrow5/arrow_attack_hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0320129, -0.1521, 0.158691)
+shape = SubResource("BoxShape3D_pyf3k")
+
+[node name="Reloading" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="Lifespan" type="Timer" parent="."]
+wait_time = 8.0
+one_shot = true
+
+[connection signal="timeout" from="Reloading" to="." method="_on_reloading_timeout"]
+[connection signal="timeout" from="Lifespan" to="." method="_on_lifespan_timeout"]
