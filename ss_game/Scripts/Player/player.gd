@@ -123,7 +123,6 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction.x * CURRENT_SPEED  # Allow input to change horizontal movement
 		if state == States.JUMPING:
 			velocity.y += JUMP_VELOCITY
-
 	# Flip sprite based on input direction
 	_sprite_flip(current_dir)
 	move_and_slide()
@@ -214,6 +213,10 @@ func _on_player_hitbox_area_entered(area: Area3D) -> void:
 	elif area.is_in_group("snek_attack"):
 		knockback_delay.start()
 		animated_sprite_3d.modulate = Color(1,0,0)
+	elif area.is_in_group("snake_attack"):
+		knockback_delay.start()
+		animated_sprite_3d.modulate = Color(1,0,0)
+
 func got_hit():
 	velocity.y = knockback_airtime
 
@@ -229,9 +232,15 @@ func _on_attack_hitbox_body_entered(body: Node3D) -> void:
 	if body.is_in_group("snek"):
 		body._receive_knockback_dir(knockback_dir)
 		body._receive_damage(attack_dmg)
+	elif body.is_in_group("Snake"):
+		body._receive_knockback_dir(knockback_dir)
+		body._receive_damage(attack_dmg)
 
 func _on_slam_hitbox_body_entered(body: Node3D) -> void:
 	if body.is_in_group("snek"):
+		body._receive_knockback_dir(knockback_dir)
+		body._receive_damage(slam_dmg)
+	elif body.is_in_group("Snake"):
 		body._receive_knockback_dir(knockback_dir)
 		body._receive_damage(slam_dmg)
 

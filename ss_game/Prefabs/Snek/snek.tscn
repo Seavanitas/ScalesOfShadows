@@ -116,7 +116,7 @@ target_position = Vector3(2.5, 0, 0)
 shape = SubResource("CapsuleShape3D_ssqrw")
 
 [node name="Knockback_delay" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.1
 one_shot = true
 
 [node name="Snek_attack_hitbox" type="Area3D" parent="." groups=["snek_attack"]]

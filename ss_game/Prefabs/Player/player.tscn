@@ -311,7 +311,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ago6y"]
 radius = 0.75
-height = 3.735
+height = 2.99053
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gaeov"]
 size = Vector3(4.6377, 3.84007, 1)
@@ -626,6 +626,7 @@ animation = &"Idle"
 autoplay = "Idle"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.302486, 0)
 shape = SubResource("CapsuleShape3D_ago6y")
 
 [node name="Camera3D" type="Camera3D" parent="."]

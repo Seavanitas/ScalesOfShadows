@@ -76,14 +76,15 @@ func _receive_damage(player_dmg) -> void:
 func _on_snek_hitbox_area_entered(area: Area3D) -> void:
 	if area.is_in_group("player_attack"):
 		knockback_delay.start()
+		animated_sprite_3d.modulate = Color(1,0,0,)
 	elif area.is_in_group("player_slam"):
 		knockback_delay.start()
-
+		animated_sprite_3d.modulate = Color(1,0,0,)
 func _on_knockback_delay_timeout() -> void:
 	velocity.x = knockback * knockback_dir
 	velocity.y = knockback_airtime
 	is_knocked_back = true
-	animated_sprite_3d.modulate = Color(1,0,0,)
+	animated_sprite_3d.modulate = Color(1,1,1)
 
 func _on_snek_attack_hitbox_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
