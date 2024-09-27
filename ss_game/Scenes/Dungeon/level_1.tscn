@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://q83wf04sx0cq"]
+[gd_scene load_steps=14 format=3 uid="uid://q83wf04sx0cq"]
 
 [ext_resource type="MeshLibrary" uid="uid://c3nafp4ws3043" path="res://Assets/Gridmaps/Dungeon.tres" id="1_isx1a"]
 [ext_resource type="MeshLibrary" uid="uid://dceu4w0efc3bc" path="res://Assets/Gridmaps/Infrastructure.tres" id="2_to7pe"]
 [ext_resource type="PackedScene" uid="uid://byddoj46vo1hm" path="res://Prefabs/Traps/short_spikes.tscn" id="3_235y6"]
 [ext_resource type="ArrayMesh" uid="uid://beaf7gpd2q7ra" path="res://Assets/Traps/Platform.tres" id="3_ro8er"]
 [ext_resource type="PackedScene" uid="uid://qly3if1lwys4" path="res://Prefabs/Traps/arrow_spawner.tscn" id="4_5f54o"]
+[ext_resource type="PackedScene" uid="uid://dbmtf5dvoxxn4" path="res://Prefabs/Player/player.tscn" id="6_7l7w3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yov6j"]
 sky_top_color = Color(0.314755, 0.461245, 0.615649, 1)
@@ -26,14 +27,14 @@ loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.266667, 3.76667, 4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-16, 0, 0), Vector3(-16, 0, 0)]
+"values": [Vector3(59, -1, 0), Vector3(42, -1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_ykrcm"]
@@ -41,14 +42,14 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(42, -1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_orl7w"]
@@ -105,7 +106,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, -1, -8)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54, -1, -8)
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59, -1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, -1, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatableBody3D"]
 libraries = {
@@ -118,3 +119,6 @@ mesh = ExtResource("3_ro8er")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
 shape = SubResource("ConvexPolygonShape3D_wxib5")
+
+[node name="Player" parent="." instance=ExtResource("6_7l7w3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2, 0)
