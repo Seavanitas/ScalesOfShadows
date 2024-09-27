@@ -206,3 +206,7 @@ func got_hit():
 
 func _on_player_hitbox_area_exited(area: Area3D) -> void:
 	animated_sprite_3d.modulate = Color(1,1,1)
+
+
+func _on_door_body_exited(body: Node3D) -> void:
+	pass # Replace with function body.

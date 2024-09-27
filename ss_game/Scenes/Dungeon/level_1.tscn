@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://q83wf04sx0cq"]
+[gd_scene load_steps=17 format=3 uid="uid://q83wf04sx0cq"]
 
 [ext_resource type="MeshLibrary" uid="uid://c3nafp4ws3043" path="res://Assets/Gridmaps/Dungeon.tres" id="1_isx1a"]
 [ext_resource type="MeshLibrary" uid="uid://dceu4w0efc3bc" path="res://Assets/Gridmaps/Infrastructure.tres" id="2_to7pe"]
@@ -6,6 +6,8 @@
 [ext_resource type="ArrayMesh" uid="uid://beaf7gpd2q7ra" path="res://Assets/Traps/Platform.tres" id="3_ro8er"]
 [ext_resource type="PackedScene" uid="uid://qly3if1lwys4" path="res://Prefabs/Traps/arrow_spawner.tscn" id="4_5f54o"]
 [ext_resource type="PackedScene" uid="uid://dbmtf5dvoxxn4" path="res://Prefabs/Player/player.tscn" id="6_7l7w3"]
+[ext_resource type="Script" path="res://Scripts/Doors/Temple_Door.gd" id="7_n4y26"]
+[ext_resource type="FontFile" uid="uid://cgb5vp148j0s1" path="res://Assets/Fonts/PixelifySans-VariableFont_wght.ttf" id="8_xe5ii"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yov6j"]
 sky_top_color = Color(0.314755, 0.461245, 0.615649, 1)
@@ -61,6 +63,9 @@ _data = {
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wxib5"]
 points = PackedVector3Array(-3, -1, -2, -3, -1, 2, -3, 0, -2, 3, -1, -2, -3, 0, 2, 3, -1, 2, 3, 0, -2, 3, 0, 2)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_68t25"]
+radius = 3.0
+
 [node name="Level_1" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -81,6 +86,7 @@ metadata/_editor_floor_ = Vector3(0, 0, -4)
 
 [node name="Infrastructure" type="GridMap" parent="Gridmap"]
 mesh_library = ExtResource("2_to7pe")
+cell_size = Vector3(1.99, 1.99, 1.99)
 data = {
 "cells": PackedInt32Array(-65500, 0, 0, -65535, 0, 655360)
 }
@@ -122,3 +128,22 @@ shape = SubResource("ConvexPolygonShape3D_wxib5")
 
 [node name="Player" parent="." instance=ExtResource("6_7l7w3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2, 0)
+
+[node name="Door" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72, 0, 0)
+script = ExtResource("7_n4y26")
+
+[node name="Label3D6" type="Label3D" parent="Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 2
+no_depth_test = true
+texture_filter = 0
+text = "[E] to Interact	"
+font = ExtResource("8_xe5ii")
+font_size = 172
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door"]
+shape = SubResource("SphereShape3D_68t25")
+
+[connection signal="body_entered" from="Door" to="Door" method="_on_body_entered"]
+[connection signal="body_exited" from="Door" to="Door" method="_on_body_exited"]

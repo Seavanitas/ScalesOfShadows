@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjqubbivsp0x"]
+[gd_scene load_steps=10 format=3 uid="uid://bjqubbivsp0x"]
 
 [ext_resource type="MeshLibrary" uid="uid://cpu010h2fp5tn" path="res://Assets/Gridmaps/Overworld.tres" id="1_k8877"]
 [ext_resource type="MeshLibrary" uid="uid://dceu4w0efc3bc" path="res://Assets/Gridmaps/Infrastructure.tres" id="2_jmrg7"]
+[ext_resource type="PackedScene" uid="uid://dbmtf5dvoxxn4" path="res://Prefabs/Player/player.tscn" id="3_ogdbw"]
+[ext_resource type="FontFile" uid="uid://cgb5vp148j0s1" path="res://Assets/Fonts/PixelifySans-VariableFont_wght.ttf" id="4_dshe4"]
+[ext_resource type="Script" path="res://Scripts/Doors/OverworldDoor.gd" id="5_ukrjs"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1f31x"]
 sky_top_color = Color(0.314755, 0.461245, 0.615649, 1)
@@ -15,6 +18,9 @@ sky_material = SubResource("ProceduralSkyMaterial_1f31x")
 [sub_resource type="Environment" id="Environment_uj3jk"]
 background_mode = 2
 sky = SubResource("Sky_olm23")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_avjdj"]
+radius = 3.0
 
 [node name="Tutorial" type="Node3D"]
 
@@ -46,3 +52,72 @@ metadata/_editor_floor_ = Vector3(0, 0, -1)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 23, 7, 0)
+
+[node name="player" parent="." instance=ExtResource("3_ogdbw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 0)
+
+[node name="Signs" type="Node3D" parent="."]
+
+[node name="Label3D" type="Label3D" parent="Signs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3, 0)
+billboard = 2
+no_depth_test = true
+texture_filter = 0
+text = "A, <- to go Left"
+font = ExtResource("4_dshe4")
+font_size = 172
+
+[node name="Label3D2" type="Label3D" parent="Signs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2, 0)
+billboard = 2
+no_depth_test = true
+texture_filter = 0
+text = "D, -> to go Right"
+font = ExtResource("4_dshe4")
+font_size = 172
+
+[node name="Label3D3" type="Label3D" parent="Signs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 1, 0)
+billboard = 2
+no_depth_test = true
+texture_filter = 0
+text = "Shift to Sprint"
+font = ExtResource("4_dshe4")
+font_size = 172
+
+[node name="Label3D4" type="Label3D" parent="Signs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 6, 0)
+billboard = 2
+no_depth_test = true
+texture_filter = 0
+text = "Spacebar, W, Up to Jump"
+font = ExtResource("4_dshe4")
+font_size = 172
+
+[node name="Label3D5" type="Label3D" parent="Signs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 7, 0)
+billboard = 2
+no_depth_test = true
+texture_filter = 0
+text = "Q to Dash"
+font = ExtResource("4_dshe4")
+font_size = 172
+
+[node name="Door" type="Area3D" parent="Signs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 7, 0)
+script = ExtResource("5_ukrjs")
+
+[node name="Label3D6" type="Label3D" parent="Signs/Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 2
+no_depth_test = true
+texture_filter = 0
+text = "[E] to Interact	"
+font = ExtResource("4_dshe4")
+font_size = 172
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Signs/Door"]
+shape = SubResource("SphereShape3D_avjdj")
+
+[connection signal="body_entered" from="Signs/Door" to="Signs/Door" method="_on_body_entered"]
+[connection signal="body_exited" from="Signs/Door" to="Signs/Door" method="_on_body_exited"]
