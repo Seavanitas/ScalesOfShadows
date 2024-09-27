@@ -17,7 +17,7 @@ func _on_back_pressed() -> void:
 
 
 func _on_level_3_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Dungeon/level_3.tscn")
 
 
 func _on_level_2_pressed() -> void:

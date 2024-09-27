@@ -5,9 +5,9 @@
 [ext_resource type="ArrayMesh" uid="uid://beaf7gpd2q7ra" path="res://Assets/Traps/Platform.tres" id="3_7jxqy"]
 [ext_resource type="PackedScene" uid="uid://dbmtf5dvoxxn4" path="res://Prefabs/Player/player.tscn" id="3_kv7jx"]
 [ext_resource type="PackedScene" uid="uid://bukjobxi3xst8" path="res://Prefabs/Snek/snek.tscn" id="3_o5sdi"]
-[ext_resource type="Script" path="res://Scripts/Doors/Temple_Door.gd" id="4_1jkie"]
 [ext_resource type="PackedScene" uid="uid://nqtfmpjg87tg" path="res://Prefabs/Traps/tall_spikes.tscn" id="4_u773o"]
 [ext_resource type="FontFile" uid="uid://cgb5vp148j0s1" path="res://Assets/Fonts/PixelifySans-VariableFont_wght.ttf" id="5_qpimn"]
+[ext_resource type="Script" path="res://Scripts/Doors/Temple_Door2.gd" id="8_eib8v"]
 [ext_resource type="PackedScene" uid="uid://bxtxnq23s8pla" path="res://Prefabs/Snake/snake.tscn" id="9_qtrn8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yov6j"]
@@ -16,12 +16,12 @@ sky_curve = 0.0388225
 ground_horizon_color = Color(0.580467, 0.6688, 0.737742, 1)
 ground_curve = 0.331285
 
-[sub_resource type="Sky" id="Sky_u1xss"]
+[sub_resource type="Sky" id="Sky_kkvfc"]
 sky_material = SubResource("ProceduralSkyMaterial_yov6j")
 
 [sub_resource type="Environment" id="Environment_dq5vu"]
 background_mode = 2
-sky = SubResource("Sky_u1xss")
+sky = SubResource("Sky_kkvfc")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qvol8"]
 points = PackedVector3Array(-3, -1, -2, -3, -1, 2, -3, 0, -2, 3, -1, -2, -3, 0, 2, 3, -1, 2, 3, 0, -2, 3, 0, 2)
@@ -145,9 +145,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73, -9, 2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, 0)
 
 [node name="Door" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72, 0, 0)
-visible = false
-script = ExtResource("4_1jkie")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94, 0, 0)
+script = ExtResource("8_eib8v")
 
 [node name="Label3D6" type="Label3D" parent="Door"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
