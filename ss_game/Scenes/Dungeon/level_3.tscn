@@ -325,9 +325,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 0, 0)
 [node name="Snek4" parent="Enemies" instance=ExtResource("6_88c3s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79, 1, 0)
 
-[node name="Snek3" parent="Enemies" instance=ExtResource("6_88c3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112, 0, 0)
-
 [node name="Snek2" parent="Enemies" instance=ExtResource("6_88c3s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -1, 0)
 
