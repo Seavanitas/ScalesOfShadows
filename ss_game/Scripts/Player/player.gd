@@ -30,12 +30,21 @@ const gravity = 40
 # Stores the dash direction
 var dash_direction: Vector3 = Vector3.ZERO
 # Stores knockback direction
-var knockback_dir
+var knockback_dir := 1
 # Stores knockback power
-var knockback_power
+var knockback := 50
 # Stores knockback airtime
 var knockback_airtime := 15
-
+# Stores current direction
+var current_dir := 1
+# Player dmg
+var slam_dmg = 4
+# Player dmg
+var attack_dmg = 1
+# Player health
+var health := 6
+# Enemy direction
+var current_enemy_dir := 1
 # This enum lists all the possible states the character can be in.
 enum States {IDLE, RUNNING, JUMPING, FALLING, DASHING, WALKING, ATTACKING, SLAMMING}
 
@@ -51,6 +60,7 @@ var state: States = States.IDLE
 @onready var attack_collision: CollisionShape3D = $Attack_Hitbox/Attack_Collision
 @onready var animated_sprite_3d: AnimatedSprite3D = $AnimatedSprite3D
 @onready var slam_collision: CollisionShape3D = $Slam_Hitbox/Slam_Collision
+@onready var knockback_delay: Timer = $Knockback_delay
 
 func _physics_process(delta: float) -> void:
 	# Prevents player from going in different directions in the Z axis
@@ -162,11 +172,12 @@ func _sprite_flip(current_dir: float = 0) -> void:
 		animated_sprite_3d.flip_h = false
 		slam_collision.position.x = 1.819
 		attack_collision.position.x = 1.762
+		knockback_dir = 1
 	elif current_dir == -1: 
 		animated_sprite_3d.flip_h = true
 		slam_collision.position.x = -1.819
 		attack_collision.position.x = -1.762
-
+		knockback_dir = -1
 func _on_dash_cooldown_timeout() -> void:
 	didDash = false
 
@@ -200,7 +211,9 @@ func _on_player_hitbox_area_entered(area: Area3D) -> void:
 	elif area.is_in_group("spikes"):
 		animated_sprite_3d.modulate = Color(1,0,0)
 		got_hit()
-		
+	elif area.is_in_group("snek_attack"):
+		knockback_delay.start()
+		animated_sprite_3d.modulate = Color(1,0,0)
 func got_hit():
 	velocity.y = knockback_airtime
 
@@ -210,3 +223,26 @@ func _on_player_hitbox_area_exited(area: Area3D) -> void:
 
 func _on_door_body_exited(body: Node3D) -> void:
 	pass # Replace with function body.
+
+## attack func
+func _on_attack_hitbox_body_entered(body: Node3D) -> void:
+	if body.is_in_group("snek"):
+		body._receive_knockback_dir(knockback_dir)
+		body._receive_damage(attack_dmg)
+
+func _on_slam_hitbox_body_entered(body: Node3D) -> void:
+	if body.is_in_group("snek"):
+		body._receive_knockback_dir(knockback_dir)
+		body._receive_damage(slam_dmg)
+
+func _on_knockback_delay_timeout() -> void:
+	velocity.x = knockback * current_enemy_dir
+	velocity.y = knockback_airtime
+	animated_sprite_3d.modulate = Color(1,1,1)
+
+## Receiving dmg func
+func _receive_damage(dmg) -> void:
+	health -= dmg
+
+func _recieve_enemy_dir(enemy_dir) -> void:
+	current_enemy_dir = enemy_dir
