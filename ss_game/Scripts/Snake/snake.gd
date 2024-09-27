@@ -25,6 +25,8 @@ var state: States = States.IDLE
 @onready var wall_cast_right: RayCast3D = $RayCastNodes/WallCastRight
 @onready var enemy_sight_collider: Area3D = $EnemySightCollider
 @onready var attack_cd: Timer = $AttackCD
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var strike_collider: CollisionShape3D = $strike_hitbox/strike_collider
 
 func _physics_process(delta: float) -> void:
 	#Prevents enemy from going in different directions in the Z axis
@@ -57,11 +59,11 @@ func change_state(new_state: States) -> void:
 		state = new_state
 		match state:
 			States.IDLE:
-				animated_sprite_3d.play("Walk")
+				animation_player.play("Walk")
 			States.CHASING:
-				animated_sprite_3d.play("Chase")
+				animation_player.play("Chase")
 			States.ATTACKING:
-				animated_sprite_3d.play("Attack")
+				animation_player.play("Attack")
 			States.DEAD:
 				animated_sprite_3d.play("Dead")
 
@@ -88,9 +90,10 @@ func movement() -> void:
 func _sprite_flip() -> void:
 	if current_dir == 1:
 		animated_sprite_3d.flip_h = true
+		strike_collider.position.x = 2
 	elif current_dir == -1: 
 		animated_sprite_3d.flip_h = false
-
+		strike_collider.position.x = -2
 
 func _on_enemy_sight_collider_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
@@ -112,3 +115,10 @@ func _on_animated_sprite_3d_animation_finished() -> void:
 
 func _on_attack_cd_timeout() -> void:
 	isAttacking = false
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if player != null:
+		change_state(States.CHASING)
+	else:
+		change_state(States.IDLE)
