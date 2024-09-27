@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://dbmtf5dvoxxn4"]
+[gd_scene load_steps=65 format=3 uid="uid://dbmtf5dvoxxn4"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_f2ll3"]
 [ext_resource type="Texture2D" uid="uid://bwhvvqfggvr7j" path="res://Assets/Player/Player_Attack.png" id="2_cehf7"]
@@ -9,6 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://bejshtjnaqbpm" path="res://Assets/Player/Player_Slam.png" id="6_ork8x"]
 [ext_resource type="Texture2D" uid="uid://bobbk83w7v1bf" path="res://Assets/Player/Player_Walk.png" id="7_fc1ix"]
 [ext_resource type="PackedScene" uid="uid://dx8ls7vg1hosu" path="res://Prefabs/HUD/hearts_container.tscn" id="9_08r34"]
+[ext_resource type="Texture2D" uid="uid://d0cwfn3dhnhjp" path="res://Assets/Misc/Gear-icon.png" id="10_wtcco"]
+[ext_resource type="Texture2D" uid="uid://bk6lqhd7sqtr0" path="res://Assets/Misc/Gear-icon-pressed.png" id="11_umctc"]
+[ext_resource type="Texture2D" uid="uid://ckti3h02wkq3o" path="res://Assets/Misc/Gear-icon-hover.png" id="12_ms48v"]
+[ext_resource type="PackedScene" uid="uid://cm00b75i2pir4" path="res://Scenes/pause_menu.tscn" id="13_jlttg"]
+[ext_resource type="Script" path="res://Scripts/texture_button.gd" id="13_v64nw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1y60h"]
 atlas = ExtResource("2_cehf7")
@@ -675,8 +680,23 @@ autoplay = "Idle"
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HeartsContainer" parent="CanvasLayer" instance=ExtResource("9_08r34")]
-offset_right = 0.0
 offset_bottom = 0.0
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -60.0
+offset_right = -28.0
+offset_bottom = 32.0
+grow_horizontal = 0
+scale = Vector2(1.88, 1.88)
+texture_normal = ExtResource("10_wtcco")
+texture_pressed = ExtResource("11_umctc")
+texture_hover = ExtResource("12_ms48v")
+script = ExtResource("13_v64nw")
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("13_jlttg")]
 
 [node name="Knockback_delay" type="Timer" parent="."]
 wait_time = 0.1
@@ -692,4 +712,5 @@ one_shot = true
 [connection signal="area_entered" from="Player_Hitbox" to="." method="_on_player_hitbox_area_entered"]
 [connection signal="area_exited" from="Player_Hitbox" to="." method="_on_player_hitbox_area_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="CanvasLayer/TextureButton" to="CanvasLayer/PauseMenu" method="_on_texture_button_pressed"]
 [connection signal="timeout" from="Knockback_delay" to="." method="_on_knockback_delay_timeout"]

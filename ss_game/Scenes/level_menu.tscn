@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpcyo6yxayb2w"]
+
+[ext_resource type="Script" path="res://Scripts/level_menu.gd" id="1_c3ikx"]
+[ext_resource type="FontFile" uid="uid://bu4r2y8fxggxa" path="res://Assets/Fonts/static/PixelifySans-Regular.ttf" id="2_tf82h"]
+
+[node name="Level_Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c3ikx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -50.0
+offset_right = 33.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Level_1" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tf82h")
+theme_override_font_sizes/font_size = 76
+text = "Level_1"
+
+[node name="Level_2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tf82h")
+theme_override_font_sizes/font_size = 76
+text = "Level_2"
+
+[node name="Level_3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tf82h")
+theme_override_font_sizes/font_size = 76
+text = "Level_3"
+
+[node name="Back" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tf82h")
+theme_override_font_sizes/font_size = 76
+text = "Back"
+
+[connection signal="pressed" from="VBoxContainer/Level_1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="VBoxContainer/Level_2" to="." method="_on_level_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/Level_3" to="." method="_on_level_3_pressed"]
+[connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_back_pressed"]
