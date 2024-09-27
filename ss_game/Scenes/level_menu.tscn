@@ -26,6 +26,12 @@ offset_bottom = 51.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Tutorial" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tf82h")
+theme_override_font_sizes/font_size = 76
+text = "Tutorial"
+
 [node name="Level_1" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_tf82h")
@@ -50,6 +56,7 @@ theme_override_fonts/font = ExtResource("2_tf82h")
 theme_override_font_sizes/font_size = 76
 text = "Back"
 
+[connection signal="pressed" from="VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="pressed" from="VBoxContainer/Level_1" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="VBoxContainer/Level_2" to="." method="_on_level_2_pressed"]
 [connection signal="pressed" from="VBoxContainer/Level_3" to="." method="_on_level_3_pressed"]

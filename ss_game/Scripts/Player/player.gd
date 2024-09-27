@@ -67,6 +67,8 @@ func _ready() -> void:
 	hearts_container.setMaxHearts(3)
 	hearts_container.updateHearts(health)
 func _physics_process(delta: float) -> void:
+	if health <= 0:
+		get_tree().change_scene_to_file("res://Scenes/death_screen.tscn")
 	# Prevents player from going in different directions in the Z axis
 	velocity.z = 0
 	if position.z > 0 or position.z < 0:

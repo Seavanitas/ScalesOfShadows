@@ -69,6 +69,24 @@ radius = 3.0
 
 [node name="Level_2" type="Node3D"]
 
+[node name="Label3D5" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 3, 0)
+billboard = 2
+no_depth_test = true
+texture_filter = 0
+text = "M1 To Attack"
+font = ExtResource("5_qpimn")
+font_size = 172
+
+[node name="Label3D6" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 2, 0)
+billboard = 2
+no_depth_test = true
+texture_filter = 0
+text = "F to Slam"
+font = ExtResource("5_qpimn")
+font_size = 172
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 23, 7, 0)
 
