@@ -1,0 +1,270 @@
+[gd_scene load_steps=11 format=3 uid="uid://bshmerm5cowb4"]
+
+[ext_resource type="PackedScene" uid="uid://nqtfmpjg87tg" path="res://Prefabs/Traps/tall_spikes.tscn" id="1_yhp01"]
+[ext_resource type="PackedScene" uid="uid://byddoj46vo1hm" path="res://Prefabs/Traps/short_spikes.tscn" id="2_bbaor"]
+[ext_resource type="MeshLibrary" uid="uid://c3nafp4ws3043" path="res://Assets/Gridmaps/Dungeon.tres" id="3_lpwf4"]
+[ext_resource type="MeshLibrary" uid="uid://dceu4w0efc3bc" path="res://Assets/Gridmaps/Infrastructure.tres" id="4_l03s6"]
+[ext_resource type="PackedScene" uid="uid://dbmtf5dvoxxn4" path="res://Prefabs/Player/player.tscn" id="5_26mi5"]
+[ext_resource type="PackedScene" uid="uid://bukjobxi3xst8" path="res://Prefabs/Snek/snek.tscn" id="6_88c3s"]
+[ext_resource type="PackedScene" uid="uid://bxtxnq23s8pla" path="res://Prefabs/Snake/snake.tscn" id="7_iufxb"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1fnt5"]
+sky_top_color = Color(0.314755, 0.461245, 0.615649, 1)
+sky_curve = 0.0388225
+ground_horizon_color = Color(0.580467, 0.6688, 0.737742, 1)
+ground_curve = 0.331285
+
+[sub_resource type="Sky" id="Sky_u1xss"]
+sky_material = SubResource("ProceduralSkyMaterial_1fnt5")
+
+[sub_resource type="Environment" id="Environment_kdfvh"]
+background_mode = 2
+sky = SubResource("Sky_u1xss")
+
+[node name="Level_3" type="Node3D"]
+
+[node name="Traps" type="Node3D" parent="."]
+
+[node name="Tall_Spikes" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49, -9, 0)
+
+[node name="Tall_Spikes2" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49, -9, 2)
+
+[node name="Tall_Spikes3" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49, -9, -2)
+
+[node name="Tall_Spikes4" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51, -9, -2)
+
+[node name="Tall_Spikes5" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51, -9, 0)
+
+[node name="Tall_Spikes6" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51, -9, 2)
+
+[node name="Tall_Spikes7" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, -9, 0)
+
+[node name="Tall_Spikes8" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, -9, 2)
+
+[node name="Tall_Spikes9" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, -9, -2)
+
+[node name="Tall_Spikes10" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, -9, -2)
+
+[node name="Tall_Spikes11" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, -9, 0)
+
+[node name="Tall_Spikes12" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, -9, 2)
+
+[node name="Tall_Spikes13" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57, -9, 0)
+
+[node name="Tall_Spikes14" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57, -9, 2)
+
+[node name="Tall_Spikes15" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57, -9, -2)
+
+[node name="Tall_Spikes16" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59, -9, -2)
+
+[node name="Tall_Spikes17" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59, -9, 0)
+
+[node name="Tall_Spikes18" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59, -9, 2)
+
+[node name="Tall_Spikes19" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, -9, 0)
+
+[node name="Tall_Spikes20" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, -9, 2)
+
+[node name="Tall_Spikes21" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, -9, -2)
+
+[node name="Tall_Spikes22" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63, -9, -2)
+
+[node name="Tall_Spikes23" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63, -9, 0)
+
+[node name="Tall_Spikes24" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63, -9, 2)
+
+[node name="Tall_Spikes25" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65, -9, 0)
+
+[node name="Tall_Spikes26" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65, -9, 2)
+
+[node name="Tall_Spikes27" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65, -9, -2)
+
+[node name="Tall_Spikes28" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67, -9, -2)
+
+[node name="Tall_Spikes29" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67, -9, 0)
+
+[node name="Tall_Spikes30" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67, -9, 2)
+
+[node name="Tall_Spikes31" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69, -9, 0)
+
+[node name="Tall_Spikes32" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69, -9, 2)
+
+[node name="Tall_Spikes33" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69, -9, -2)
+
+[node name="Tall_Spikes34" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71, -9, -2)
+
+[node name="Tall_Spikes35" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71, -9, 0)
+
+[node name="Tall_Spikes36" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71, -9, 2)
+
+[node name="Tall_Spikes37" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73, -9, 0)
+
+[node name="Tall_Spikes38" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73, -9, 2)
+
+[node name="Tall_Spikes39" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73, -9, -2)
+
+[node name="Tall_Spikes40" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75, -9, -2)
+
+[node name="Tall_Spikes41" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75, -9, 0)
+
+[node name="Tall_Spikes42" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75, -9, 2)
+
+[node name="Tall_Spikes43" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77, -9, 0)
+
+[node name="Tall_Spikes44" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77, -9, 2)
+
+[node name="Tall_Spikes45" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77, -9, -2)
+
+[node name="Tall_Spikes46" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79, -9, -2)
+
+[node name="Tall_Spikes47" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79, -9, 0)
+
+[node name="Tall_Spikes48" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79, -9, 2)
+
+[node name="Tall_Spikes49" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81, -9, 0)
+
+[node name="Tall_Spikes50" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81, -9, 2)
+
+[node name="Tall_Spikes51" parent="Traps" instance=ExtResource("1_yhp01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81, -9, -2)
+
+[node name="Short_Spikes" parent="Traps" instance=ExtResource("2_bbaor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, -5, 0)
+
+[node name="Short_Spikes2" parent="Traps" instance=ExtResource("2_bbaor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, -5, 0)
+
+[node name="Short_Spikes3" parent="Traps" instance=ExtResource("2_bbaor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -5, 0)
+
+[node name="Short_Spikes4" parent="Traps" instance=ExtResource("2_bbaor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, -5, -2)
+
+[node name="Short_Spikes5" parent="Traps" instance=ExtResource("2_bbaor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, -5, -2)
+
+[node name="Short_Spikes6" parent="Traps" instance=ExtResource("2_bbaor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -5, -2)
+
+[node name="Short_Spikes7" parent="Traps" instance=ExtResource("2_bbaor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, -5, 2)
+
+[node name="Short_Spikes8" parent="Traps" instance=ExtResource("2_bbaor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, -5, 2)
+
+[node name="Short_Spikes9" parent="Traps" instance=ExtResource("2_bbaor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -5, 2)
+
+[node name="Short_Spikes10" parent="Traps" instance=ExtResource("2_bbaor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, -5, 0)
+
+[node name="Short_Spikes11" parent="Traps" instance=ExtResource("2_bbaor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39, -5, 0)
+
+[node name="Short_Spikes12" parent="Traps" instance=ExtResource("2_bbaor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, -5, 0)
+
+[node name="Short_Spikes13" parent="Traps" instance=ExtResource("2_bbaor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, -5, -2)
+
+[node name="Short_Spikes14" parent="Traps" instance=ExtResource("2_bbaor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39, -5, -2)
+
+[node name="Short_Spikes15" parent="Traps" instance=ExtResource("2_bbaor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, -5, -2)
+
+[node name="Short_Spikes16" parent="Traps" instance=ExtResource("2_bbaor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, -5, 2)
+
+[node name="Short_Spikes17" parent="Traps" instance=ExtResource("2_bbaor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39, -5, 2)
+
+[node name="Short_Spikes18" parent="Traps" instance=ExtResource("2_bbaor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, -5, 2)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 23, 7, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kdfvh")
+
+[node name="Gridmap" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="Dungeon" type="GridMap" parent="Gridmap"]
+mesh_library = ExtResource("3_lpwf4")
+data = {
+"cells": PackedInt32Array(-65536, 0, 1, -65535, 0, 1, -65526, 0, 6, -65522, 0, 7, -196597, 0, 1, -196596, 0, 1, -196595, 0, 1, -65521, 0, 1, -65520, 0, 6, -196591, 0, 1, -196590, 0, 1, -196589, 0, 1, -65514, 0, 1, -65513, 0, 6, -131067, 0, 1, -65527, 0, 1, -131066, 0, 1, -131068, 0, 1, -131070, 0, 10, -131065, 0, 9, -131056, 0, 5, -131058, 0, 0, -131049, 0, 5, -196585, 0, 5, -131062, 0, 5, -65515, 0, 1, -131052, 0, 0, -65516, 0, 7, -262121, 0, 5, -327641, 0, 1, -327640, 0, 1, -327642, 0, 1, -327654, 0, 1, -327652, 0, 1, -327651, 0, 1, -327649, 0, 1, -327650, 0, 1, -327648, 0, 1, -327647, 0, 1, -327646, 0, 1, -327645, 0, 1, -327644, 0, 1, -327643, 0, 1, -327653, 0, 1, -327655, 0, 1, -327656, 0, 1, -262103, 0, 0, -196567, 0, 0, -131031, 0, 0, -65495, 0, 7, -65494, 0, 1, -131029, 0, 10, -131027, 0, 1, -131026, 0, 1, -131025, 0, 1, -131024, 0, 1, -131023, 0, 1, -131022, 0, 1, -131021, 0, 1, -131020, 0, 9, -65482, 0, 1, -65481, 0, 1, -65480, 0, 1, -65479, 0, 1, 58, 0, 7, 59, 0, 1, 60, 0, 1, 61, 0, 1, 62, 0, 6, 72, 0, 0, 196680, 0, 0, 65608, 0, 0, 131144, 0, 0, -65473, 0, 1, -65472, 0, 1, -65471, 0, 1, -65470, 0, 1, -65469, 0, 1, -65468, 0, 1, -65467, 0, 1, -65466, 0, 1, -65465, 0, 1, 65535, 0, 5, 131071, 0, 5, 196607, 0, 5, 196608, 0, 3, 196609, 0, 3, 196610, 0, 3, 196611, 0, 3, 196612, 0, 3, 196613, 0, 3, 196614, 0, 3, 196615, 0, 3, 196616, 0, 3, 196617, 0, 3, 196618, 0, 3, 196619, 0, 3, 196620, 0, 3, 196621, 0, 3, 196622, 0, 3, 196623, 0, 3, 196624, 0, 3, 196625, 0, 3, 196626, 0, 3, 196627, 0, 3, 196628, 0, 3, 196629, 0, 3, 196630, 0, 3, 196631, 0, 3, 196632, 0, 3, 196633, 0, 3, 196634, 0, 3, 196635, 0, 3, 196636, 0, 3, 196637, 0, 3, 196638, 0, 3, 196639, 0, 3, 196640, 0, 3, 196641, 0, 3, 196642, 0, 3, 196643, 0, 3, 196644, 0, 3, 196645, 0, 3, 196646, 0, 3, 196647, 0, 3, 196648, 0, 3, 196649, 0, 3, 196650, 0, 3, 196651, 0, 3, 196652, 0, 3, 196653, 0, 3, 196654, 0, 3, 196655, 0, 3, 196656, 0, 3, 196657, 0, 3, 196658, 0, 3, 196659, 0, 3, 196660, 0, 3, 196661, 0, 3, 196662, 0, 3, 196663, 0, 4, 262200, 0, 3, 262201, 0, 3, 262202, 0, 3, 262203, 0, 3, 262204, 0, 3, 262205, 0, 3, 262206, 0, 3, 262207, 0, 3, 262208, 0, 3, 262209, 0, 3, 262210, 0, 3, 262211, 0, 3, 262212, 0, 3, 262213, 0, 3, 262214, 0, 3, 262215, 0, 3, -65478, 0, 15, -65464, 0, 15, -327639, 0, 15, -196594, 0, 15, -196588, 0, 15, -196598, 0, 14, -196592, 0, 14, -1, 0, 14, -327657, 0, 14, -65474, 0, 14, 262216, 0, 12, 262143, 0, 13, 262199, 0, 13)
+}
+
+[node name="Infrastructure" type="GridMap" parent="Gridmap"]
+mesh_library = ExtResource("4_l03s6")
+
+[node name="player" parent="." instance=ExtResource("5_26mi5")]
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="Snek" parent="Enemies" instance=ExtResource("6_88c3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 0, 0)
+
+[node name="Snek2" parent="Enemies" instance=ExtResource("6_88c3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -1, 0)
+
+[node name="Snake" parent="Enemies" instance=ExtResource("7_iufxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95, 0, 0)
+
+[node name="Snake2" parent="Enemies" instance=ExtResource("7_iufxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 120, 3, 0)
+
+[node name="Snake3" parent="Enemies" instance=ExtResource("7_iufxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136, 1, 0)
