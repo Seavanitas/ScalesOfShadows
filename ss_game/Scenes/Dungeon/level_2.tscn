@@ -124,7 +124,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73, -9, -2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73, -9, 2)
 
 [node name="Player" parent="." instance=ExtResource("3_kv7jx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, 0)
 
 [node name="Door" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72, 0, 0)

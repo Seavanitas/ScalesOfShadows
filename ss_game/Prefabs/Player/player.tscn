@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://dbmtf5dvoxxn4"]
+[gd_scene load_steps=60 format=3 uid="uid://dbmtf5dvoxxn4"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_f2ll3"]
 [ext_resource type="Texture2D" uid="uid://bwhvvqfggvr7j" path="res://Assets/Player/Player_Attack.png" id="2_cehf7"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://nanrdfkvbo27" path="res://Assets/Player/Player_Idle.png" id="5_qonkc"]
 [ext_resource type="Texture2D" uid="uid://bejshtjnaqbpm" path="res://Assets/Player/Player_Slam.png" id="6_ork8x"]
 [ext_resource type="Texture2D" uid="uid://bobbk83w7v1bf" path="res://Assets/Player/Player_Walk.png" id="7_fc1ix"]
+[ext_resource type="PackedScene" uid="uid://dx8ls7vg1hosu" path="res://Prefabs/HUD/hearts_container.tscn" id="9_08r34"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1y60h"]
 atlas = ExtResource("2_cehf7")
@@ -673,21 +674,9 @@ autoplay = "Idle"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Container" type="Container" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="HeartsContainer" parent="CanvasLayer" instance=ExtResource("9_08r34")]
+offset_right = 0.0
+offset_bottom = 0.0
 
 [node name="Knockback_delay" type="Timer" parent="."]
 wait_time = 0.1

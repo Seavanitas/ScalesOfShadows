@@ -61,7 +61,11 @@ var state: States = States.IDLE
 @onready var animated_sprite_3d: AnimatedSprite3D = $AnimatedSprite3D
 @onready var slam_collision: CollisionShape3D = $Slam_Hitbox/Slam_Collision
 @onready var knockback_delay: Timer = $Knockback_delay
+@onready var hearts_container: HBoxContainer = $CanvasLayer/HeartsContainer
 
+func _ready() -> void:
+	hearts_container.setMaxHearts(3)
+	hearts_container.updateHearts(health)
 func _physics_process(delta: float) -> void:
 	# Prevents player from going in different directions in the Z axis
 	velocity.z = 0
@@ -124,6 +128,7 @@ func _physics_process(delta: float) -> void:
 		if state == States.JUMPING:
 			velocity.y += JUMP_VELOCITY
 	# Flip sprite based on input direction
+	print(health)
 	_sprite_flip(current_dir)
 	move_and_slide()
 
@@ -249,9 +254,10 @@ func _on_knockback_delay_timeout() -> void:
 	velocity.y = knockback_airtime
 	animated_sprite_3d.modulate = Color(1,1,1)
 
-## Receiving dmg func
+## Receiving dmg func	
 func _receive_damage(dmg) -> void:
 	health -= dmg
+	hearts_container.updateHearts(health)
 
 func _recieve_enemy_dir(enemy_dir) -> void:
 	current_enemy_dir = enemy_dir

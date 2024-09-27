@@ -54,8 +54,11 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, knockback * delta)
 		if abs(velocity.x) < 0.1:  # Threshold to stop knockback
 			velocity.x = 0
-			is_knocked_back = false
-			change_state(States.IDLE)  # Change back to IDLE after knockback
+			if player != null:
+				change_state(States.CHASING)
+			else:
+				change_state(States.IDLE)
+
 
 	# State functions based on state change
 	if state == States.IDLE:

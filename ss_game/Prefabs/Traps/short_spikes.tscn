@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://byddoj46vo1hm"]
+[gd_scene load_steps=5 format=3 uid="uid://byddoj46vo1hm"]
 
 [ext_resource type="ArrayMesh" uid="uid://dwusmfq8fa5ts" path="res://Assets/Traps/Spikes/Short_Spikes.tres" id="1_4qfs1"]
+[ext_resource type="Script" path="res://Scripts/Spikes/short_spikes.gd" id="1_gg4xg"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_uqnwt"]
 points = PackedVector3Array(-0.4863, 0.909645, -0.736539, -0.241028, -0.000131331, -0.551197, -0.387279, -0.000131331, -0.566146, -0.446561, -0.000131331, -0.431754, -0.810235, 0.905906, 0.193529, -0.324414, 1.45255, -0.458144, 0.487949, 0.919712, -0.478585, 0.47834, -0.000562778, -0.406889, 0.574592, -0.0126433, -0.296599, 0.499023, -0.0166701, -0.170597, -0.594441, -0.00156949, 0.221902, -0.505355, 1.45183, 0.278954, -0.540045, -0.00228856, 0.358582, -0.411057, 0.906913, 0.583281, 0.423943, 1.44464, 0.525467, 0.577523, 1.4373, -0.128647, 0.853577, 0.873835, -0.0595438, 0.456842, -0.00804118, 0.406939, 0.375899, -0.0106299, 0.529433, 0.383879, 0.888648, 0.821862, 0.691691, 0.898571, 0.356447)
@@ -9,6 +10,7 @@ points = PackedVector3Array(-0.4863, 0.909645, -0.736539, -0.241028, -0.00013133
 size = Vector3(1.32855, 0.375, 1.38177)
 
 [node name="Short_Spikes" type="StaticBody3D"]
+script = ExtResource("1_gg4xg")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_4qfs1")
@@ -17,7 +19,10 @@ mesh = ExtResource("1_4qfs1")
 shape = SubResource("ConvexPolygonShape3D_uqnwt")
 
 [node name="short_spikes_attack_hitbox" type="Area3D" parent="." groups=["spikes"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.182841, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="short_spikes_attack_hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013031, 1.28823, 0.0277405)
 shape = SubResource("BoxShape3D_wxljt")
+
+[connection signal="body_entered" from="short_spikes_attack_hitbox" to="." method="_on_short_spikes_attack_hitbox_body_entered"]

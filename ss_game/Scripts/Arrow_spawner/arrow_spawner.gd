@@ -10,7 +10,8 @@ var arrow_rotation_speed := 15.0
 var player_hit = false
 # Timer flag
 var is_reloading = false
-
+# Attack
+var attack := 1
 ## Arrow-specific speeds
 var arrow1_speed := 7.0
 var arrow2_speed := 7.0
@@ -93,23 +94,29 @@ func _on_arrow_1_attack_hitbox_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		arrow_1.position.z = arrow_spawn_1.position.z
 		arrow1_speed = 0
-
+	if body.is_in_group("Player"):
+		body._receive_damage(attack)
 func _on_arrow_2_attack_hitbox_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		arrow_2.position.z = arrow_spawn_2.position.z
 		arrow2_speed = 0
-
+	if body.is_in_group("Player"):
+		body._receive_damage(attack)
 func _on_arrow_3_attack_hitbox_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		arrow_3.position.z = arrow_spawn_3.position.z
 		arrow3_speed = 0
-
+	if body.is_in_group("Player"):
+		body._receive_damage(attack)
 func _on_arrow_4_attack_hitbox_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		arrow_4.position.z = arrow_spawn_4.position.z
 		arrow4_speed = 0
-
+	if body.is_in_group("Player"):
+		body._receive_damage(attack)
 func _on_arrow_5_attack_hitbox_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		arrow_5.position.z = arrow_spawn_5.position.z
 		arrow5_speed = 0
+	if body.is_in_group("Player"):
+		body._receive_damage(attack)
