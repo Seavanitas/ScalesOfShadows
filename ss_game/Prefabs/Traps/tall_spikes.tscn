@@ -25,3 +25,5 @@ shape = SubResource("ConvexPolygonShape3D_b0yr4")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tall_spikes_attack_hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.26632, 0)
 shape = SubResource("BoxShape3D_rg78p")
+
+[connection signal="body_entered" from="tall_spikes_attack_hitbox" to="." method="_on_tall_spikes_attack_hitbox_body_entered"]

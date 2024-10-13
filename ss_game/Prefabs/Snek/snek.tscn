@@ -1,0 +1,130 @@
+[gd_scene load_steps=15 format=3 uid="uid://bukjobxi3xst8"]
+
+[ext_resource type="Script" path="res://Scripts/Snek/snek.gd" id="1_piq4d"]
+[ext_resource type="Texture2D" uid="uid://b3qcmowpkbxsh" path="res://Assets/Baby Snake/Baby_Snake_Walk.png" id="1_ukam3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57a1m"]
+atlas = ExtResource("1_ukam3")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5ije"]
+atlas = ExtResource("1_ukam3")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7rv1"]
+atlas = ExtResource("1_ukam3")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2flw1"]
+atlas = ExtResource("1_ukam3")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dp7as"]
+atlas = ExtResource("1_ukam3")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40x1u"]
+atlas = ExtResource("1_ukam3")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qguvt"]
+atlas = ExtResource("1_ukam3")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yl6e5"]
+atlas = ExtResource("1_ukam3")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1ft5"]
+atlas = ExtResource("1_ukam3")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0xkne"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_57a1m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5ije")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7rv1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2flw1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dp7as")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40x1u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qguvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yl6e5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1ft5")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ssqrw"]
+radius = 0.96
+height = 2.01
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lcf1v"]
+
+[node name="Snek" type="CharacterBody3D" groups=["snek"]]
+script = ExtResource("1_piq4d")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(11, 0, 0, 0, 11, 0, 0, 0, 11, 0, 2.53365, 0)
+billboard = 2
+shaded = true
+alpha_cut = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_0xkne")
+animation = &"Walk"
+autoplay = "Walk"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_ssqrw")
+
+[node name="RayCastNodes" type="Node3D" parent="."]
+
+[node name="Left_floor" type="RayCast3D" parent="RayCastNodes"]
+target_position = Vector3(-1.5, -1.5, 0)
+
+[node name="right_floor" type="RayCast3D" parent="RayCastNodes"]
+target_position = Vector3(1.5, -1.5, 0)
+
+[node name="Left_wall" type="RayCast3D" parent="RayCastNodes"]
+target_position = Vector3(-2.5, 0, 0)
+
+[node name="right_wall" type="RayCast3D" parent="RayCastNodes"]
+target_position = Vector3(2.5, 0, 0)
+
+[node name="Snek_Hitbox" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Snek_Hitbox"]
+shape = SubResource("CapsuleShape3D_ssqrw")
+
+[node name="Knockback_delay" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="Snek_attack_hitbox" type="Area3D" parent="." groups=["snek_attack"]]
+
+[node name="Snek_collision" type="CollisionShape3D" parent="Snek_attack_hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+shape = SubResource("BoxShape3D_lcf1v")
+
+[connection signal="area_entered" from="Snek_Hitbox" to="." method="_on_snek_hitbox_area_entered"]
+[connection signal="timeout" from="Knockback_delay" to="." method="_on_knockback_delay_timeout"]
+[connection signal="body_entered" from="Snek_attack_hitbox" to="." method="_on_snek_attack_hitbox_body_entered"]
