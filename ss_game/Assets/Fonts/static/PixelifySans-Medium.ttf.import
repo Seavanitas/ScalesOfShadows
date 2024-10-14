@@ -2,7 +2,11 @@
 
 importer="font_data_dynamic"
 type="FontFile"
+<<<<<<< Updated upstream
 uid="uid://bsuqjfhofgi2e"
+=======
+uid="uid://dfy7h6u1kg573"
+>>>>>>> Stashed changes
 path="res://.godot/imported/PixelifySans-Medium.ttf-af6555adee825401d1b0eee5d095fb87.fontdata"
 
 [deps]

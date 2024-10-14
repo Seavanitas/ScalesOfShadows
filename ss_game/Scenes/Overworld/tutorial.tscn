@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=10 format=3 uid="uid://bjqubbivsp0x"]
 
 [ext_resource type="MeshLibrary" uid="uid://cpu010h2fp5tn" path="res://Assets/Gridmaps/Overworld.tres" id="1_k8877"]
@@ -5,6 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://dbmtf5dvoxxn4" path="res://Prefabs/Player/player.tscn" id="3_ogdbw"]
 [ext_resource type="FontFile" uid="uid://cgb5vp148j0s1" path="res://Assets/Fonts/PixelifySans-VariableFont_wght.ttf" id="4_dshe4"]
 [ext_resource type="Script" path="res://Scripts/Doors/OverworldDoor.gd" id="5_ukrjs"]
+=======
+[gd_scene load_steps=7 format=3 uid="uid://bjqubbivsp0x"]
+
+[ext_resource type="MeshLibrary" uid="uid://cpu010h2fp5tn" path="res://Assets/Gridmaps/Overworld.tres" id="1_k8877"]
+[ext_resource type="MeshLibrary" uid="uid://dceu4w0efc3bc" path="res://Assets/Gridmaps/Infrastructure.tres" id="2_jmrg7"]
+[ext_resource type="PackedScene" uid="uid://dau7axme1j277" path="res://Prefabs/Player/player.tscn" id="3_agh20"]
+>>>>>>> Stashed changes
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1f31x"]
 sky_top_color = Color(0.314755, 0.461245, 0.615649, 1)
@@ -53,6 +61,7 @@ metadata/_editor_floor_ = Vector3(0, 0, -1)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 23, 7, 0)
 
+<<<<<<< Updated upstream
 [node name="player" parent="." instance=ExtResource("3_ogdbw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 0)
 
@@ -121,3 +130,7 @@ shape = SubResource("SphereShape3D_avjdj")
 
 [connection signal="body_entered" from="Signs/Door" to="Signs/Door" method="_on_body_entered"]
 [connection signal="body_exited" from="Signs/Door" to="Signs/Door" method="_on_body_exited"]
+=======
+[node name="player" parent="." instance=ExtResource("3_agh20")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3, 0)
+>>>>>>> Stashed changes

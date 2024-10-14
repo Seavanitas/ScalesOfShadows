@@ -1,4 +1,8 @@
 extends CharacterBody3D
+<<<<<<< Updated upstream
+=======
+signal amount_of_health(value)
+>>>>>>> Stashed changes
 
 ## Variable Declarations
 
@@ -30,6 +34,7 @@ const gravity = 40
 # Stores the dash direction
 var dash_direction: Vector3 = Vector3.ZERO
 # Stores knockback direction
+<<<<<<< Updated upstream
 var knockback_dir := 1
 # Stores knockback power
 var knockback := 50
@@ -45,6 +50,16 @@ var attack_dmg = 1
 var health := 6
 # Enemy direction
 var current_enemy_dir := 1
+=======
+var knockback_dir
+# Stores knockback power
+var knockback_power
+# Stores knockback airtime power
+var knockback_airtime := 15
+# Stores player health
+var health := 6
+
+>>>>>>> Stashed changes
 # This enum lists all the possible states the character can be in.
 enum States {IDLE, RUNNING, JUMPING, FALLING, DASHING, WALKING, ATTACKING, SLAMMING}
 
@@ -57,6 +72,7 @@ var state: States = States.IDLE
 @onready var attack_cooldown: Timer = $Attack_Cooldown
 @onready var slam_cooldown: Timer = $Slam_Cooldown
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+<<<<<<< Updated upstream
 @onready var attack_collision: CollisionShape3D = $Attack_Hitbox/Attack_Collision
 @onready var animated_sprite_3d: AnimatedSprite3D = $AnimatedSprite3D
 @onready var slam_collision: CollisionShape3D = $Slam_Hitbox/Slam_Collision
@@ -69,6 +85,16 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if health <= 0:
 		get_tree().change_scene_to_file("res://Scenes/death_screen.tscn")
+=======
+@onready var animated_sprite_3d: AnimatedSprite3D = $AnimatedSprite3D
+@onready var slam_collision: CollisionShape3D = $Slam_Hitbox/Slam_Collision
+@onready var attack_collision: CollisionShape3D = $Attack_Hitbox/Attack_Collision
+
+func _ready() -> void:
+	slam_collision.disabled = true
+	attack_collision.disabled = true
+func _physics_process(delta: float) -> void:
+>>>>>>> Stashed changes
 	# Prevents player from going in different directions in the Z axis
 	velocity.z = 0
 	if position.z > 0 or position.z < 0:
@@ -129,8 +155,13 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction.x * CURRENT_SPEED  # Allow input to change horizontal movement
 		if state == States.JUMPING:
 			velocity.y += JUMP_VELOCITY
+<<<<<<< Updated upstream
 	# Flip sprite based on input direction
 	print(health)
+=======
+
+	# Flip sprite based on input direction
+>>>>>>> Stashed changes
 	_sprite_flip(current_dir)
 	move_and_slide()
 
@@ -176,6 +207,7 @@ func _sprite_flip(current_dir: float = 0) -> void:
 	# Update this logic if necessary based on how you want to handle the sprite flipping
 	if current_dir == 1:
 		animated_sprite_3d.flip_h = false
+<<<<<<< Updated upstream
 		slam_collision.position.x = 1.819
 		attack_collision.position.x = 1.762
 		knockback_dir = 1
@@ -184,6 +216,15 @@ func _sprite_flip(current_dir: float = 0) -> void:
 		slam_collision.position.x = -1.819
 		attack_collision.position.x = -1.762
 		knockback_dir = -1
+=======
+		attack_collision.position.x = 1.99
+		slam_collision.position.x = 1.855
+	elif current_dir == -1: 
+		animated_sprite_3d.flip_h = true
+		slam_collision.position.x = -1.99
+		attack_collision.position.x = -1.855
+
+>>>>>>> Stashed changes
 func _on_dash_cooldown_timeout() -> void:
 	didDash = false
 
@@ -196,6 +237,7 @@ func _on_dash_length_timeout() -> void:
 func _on_attack_cooldown_timeout() -> void:
 	didAttack = false
 
+<<<<<<< Updated upstream
 func _on_animated_sprite_3d_animation_finished() -> void:
 	isAttacking = false
 	isSlamming = false
@@ -204,11 +246,14 @@ func _on_animated_sprite_3d_animation_finished() -> void:
 func _on_slam_cooldown_timeout() -> void:
 	didSlam = false
 
+=======
+>>>>>>> Stashed changes
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	isAttacking = false
 	isSlamming = false
 	change_state(States.IDLE)
 
+<<<<<<< Updated upstream
 
 ## dmg 
 func _on_player_hitbox_area_entered(area: Area3D) -> void:
@@ -263,3 +308,21 @@ func _receive_damage(dmg) -> void:
 
 func _recieve_enemy_dir(enemy_dir) -> void:
 	current_enemy_dir = enemy_dir
+=======
+## DAMAGE FUNCTIONS
+func _on_player_hitbox_area_entered(area: Area3D) -> void:
+	if area.is_in_group("arrow"):
+		animated_sprite_3d.modulate = Color(1,0,0)
+		damaged()
+	elif area.is_in_group("spikes"):
+		animated_sprite_3d.modulate = Color(1,0,0)
+		velocity.y = knockback_airtime
+		damaged()
+
+func damaged():
+	health -= 1
+	emit_signal("amount_of_health", health)
+
+func _on_player_hitbox_area_exited(area: Area3D) -> void:
+	animated_sprite_3d.modulate = Color(1,1,1)
+>>>>>>> Stashed changes

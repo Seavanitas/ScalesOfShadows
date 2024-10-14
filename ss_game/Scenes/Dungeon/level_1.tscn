@@ -1,13 +1,21 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=17 format=3 uid="uid://q83wf04sx0cq"]
+=======
+[gd_scene load_steps=14 format=3 uid="uid://q83wf04sx0cq"]
+>>>>>>> Stashed changes
 
 [ext_resource type="MeshLibrary" uid="uid://c3nafp4ws3043" path="res://Assets/Gridmaps/Dungeon.tres" id="1_isx1a"]
 [ext_resource type="MeshLibrary" uid="uid://dceu4w0efc3bc" path="res://Assets/Gridmaps/Infrastructure.tres" id="2_to7pe"]
 [ext_resource type="PackedScene" uid="uid://byddoj46vo1hm" path="res://Prefabs/Traps/short_spikes.tscn" id="3_235y6"]
 [ext_resource type="ArrayMesh" uid="uid://beaf7gpd2q7ra" path="res://Assets/Traps/Platform.tres" id="3_ro8er"]
 [ext_resource type="PackedScene" uid="uid://qly3if1lwys4" path="res://Prefabs/Traps/arrow_spawner.tscn" id="4_5f54o"]
+<<<<<<< Updated upstream
 [ext_resource type="PackedScene" uid="uid://dbmtf5dvoxxn4" path="res://Prefabs/Player/player.tscn" id="6_7l7w3"]
 [ext_resource type="Script" path="res://Scripts/Doors/Temple_Door.gd" id="7_n4y26"]
 [ext_resource type="FontFile" uid="uid://cgb5vp148j0s1" path="res://Assets/Fonts/PixelifySans-VariableFont_wght.ttf" id="8_xe5ii"]
+=======
+[ext_resource type="PackedScene" uid="uid://dau7axme1j277" path="res://Prefabs/Player/player.tscn" id="6_ie3cj"]
+>>>>>>> Stashed changes
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yov6j"]
 sky_top_color = Color(0.314755, 0.461245, 0.615649, 1)
@@ -24,7 +32,7 @@ sky = SubResource("Sky_u1xss")
 
 [sub_resource type="Animation" id="Animation_aiaaw"]
 resource_name = "Level1"
-length = 4.0
+length = 5.0
 loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -33,10 +41,17 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+<<<<<<< Updated upstream
 "times": PackedFloat32Array(0, 4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(59, -1, 0), Vector3(42, -1, 0)]
+=======
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(40, -1, 0), Vector3(59, -1, 0)]
+>>>>>>> Stashed changes
 }
 
 [sub_resource type="Animation" id="Animation_ykrcm"]
@@ -51,7 +66,11 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
+<<<<<<< Updated upstream
 "values": [Vector3(42, -1, 0)]
+=======
+"values": [Vector3(59, -1, 0)]
+>>>>>>> Stashed changes
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_orl7w"]
@@ -126,6 +145,7 @@ mesh = ExtResource("3_ro8er")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
 shape = SubResource("ConvexPolygonShape3D_wxib5")
 
+<<<<<<< Updated upstream
 [node name="Player" parent="." instance=ExtResource("6_7l7w3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2, 0)
 
@@ -147,3 +167,7 @@ shape = SubResource("SphereShape3D_68t25")
 
 [connection signal="body_entered" from="Door" to="Door" method="_on_body_entered"]
 [connection signal="body_exited" from="Door" to="Door" method="_on_body_exited"]
+=======
+[node name="player" parent="." instance=ExtResource("6_ie3cj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3, 0)
+>>>>>>> Stashed changes
